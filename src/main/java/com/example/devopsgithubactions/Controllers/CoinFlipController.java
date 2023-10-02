@@ -19,6 +19,8 @@ import java.util.List;
 
 public class CoinFlipController {
 
+    //Here is going to be a conflict
+    //test merge conflicts from feature branch
     private List<RoundResult> rounds = new ArrayList<>();
     private final Game game;
     private final WinRateCalculator winRateCalculator;
