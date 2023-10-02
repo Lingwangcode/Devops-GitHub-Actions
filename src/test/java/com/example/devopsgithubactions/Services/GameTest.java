@@ -29,7 +29,7 @@ class GameTest {
     @Test
     void userWinsWithHeads() {
         RoundResult roundResult = mockGame.playGame("heads", 0.6);
-        assertEquals(roundResult.getWinner(), "Computer");
+        assertEquals(roundResult.getWinner(), "User");
     }
 
     @Test
