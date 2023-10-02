@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Coin Flip Game</title>
+</head>
+<body>
+<h1>Coin Flip Game</h1>
+
+<form action="/flip" method="post">
+    <label for="choice">Choose:</label>
+    <select id="choice" name="choice">
+        <option value="heads">Heads</option>
+        <option value="tails">Tails</option>
+    </select>
+    <button type="submit">Flip</button>
+</form>
+
+<h2>Round Results</h2>
+<!-- Display the WINNER -->
+<div th:text="${WINNER}"></div>
+<table>
+    <tr>
+        <th>Round</th>
+        <th>User's Choice</th>
+        <th>Computer's Choice</th>
+        <th>Winner</th>
+    </tr>
+    <tr th:each="round, roundStat : ${rounds}">
+        <td th:text="${roundStat.index + 1}"></td>
+        <td th:text="${round.userChoice}"></td>
+        <td th:text="${round.computerChoice}"></td>
+        <td>
+            Winner: <span th:text="${round.winner}"></span><br>
+            Choice: <span th:text="${round.winner == 'User' ? round.userChoice : round.computerChoice}"></span>
+        </td>
+    </tr>
+</table>
+
+<h2>Scores</h2>
+<p>User Score: <span th:text="${userScore}"></span></p>
+<p>Computer Score: <span th:text="${computerScore}"></span></p>
+<p>Turns: <span th:text="${turns}"></span></p>
+<p>Win Rate: <span th:text="${winRate}"></span>%</p>
+</body>
+</html>
