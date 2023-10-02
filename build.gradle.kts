@@ -4,6 +4,30 @@ plugins {
     id("io.spring.dependency-management") version "1.1.3"
 }
 
+tasks.test {
+
+    filter {
+        excludeTestsMatching("*IntegrationTest") //ta bort integrationstester från unit tester
+    }
+    testLogging {
+        events("passed")
+    }
+}
+
+task<Test>("integrationTest") {
+    description = "Runs integration tests."
+    group = "verification"
+    testClassesDirs = sourceSets.test.get().output.classesDirs
+    classpath = sourceSets.test.get().runtimeClasspath
+    filter {
+        includeTestsMatching("*IntegrationTest")
+    }
+    testLogging {
+        events("passed")
+    }
+}
+
+
 group = "com.example"
 version = "0.0.1-SNAPSHOT"
 
@@ -26,4 +50,7 @@ dependencies {
 
 tasks.withType<Test> {
     useJUnitPlatform()
+    testLogging {
+        events("passed")
+    }
 }
