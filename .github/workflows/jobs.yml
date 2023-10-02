@@ -75,4 +75,4 @@ jobs:
 
     steps:
       - name: Fake Deployment
-        run: echo "ghcr.io/umm-a/singlaslant-github-actions:Development"
+        run: echo "ghcr.io/lingwangcode/devops-github-actions:feature"
